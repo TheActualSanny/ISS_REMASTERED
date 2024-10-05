@@ -46,7 +46,7 @@ class Warehouse_Manager:
     
 warehouse = Warehouse_Manager()
 
-if __name__ == '__main__':
-    while True:
-        time.sleep(120)
-        warehouse.insert_data() 
+
+while True:
+    time.sleep(120)
+    warehouse.insert_data() 

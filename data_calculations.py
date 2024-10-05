@@ -60,8 +60,8 @@ class Data_Calculations:
 
 calc = Data_Calculations()
 
-if __name__ == '__main__':
-    while True:
-        time.sleep(300)
-        res = calc.calculate_data()
-        logger.info(f'In the last ~5 minutes the ISS has travelled {res[0]} kilometers and is currently at: {res[1]}')
+
+while True:
+    time.sleep(300)
+    res = calc.calculate_data()
+    logger.info(f'In the last ~5 minutes the ISS has travelled {res[0]} kilometers and is currently at: {res[1]}')

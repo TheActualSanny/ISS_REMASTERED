@@ -34,7 +34,6 @@ class JSON_Manager:
 json_manager = JSON_Manager()
 
 
-if __name__ == '__main__':
-    while True:
-        json_manager.update_json()
-        time.sleep(2)
+while True:
+    json_manager.update_json()
+    time.sleep(2)
