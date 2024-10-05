@@ -3,12 +3,11 @@
 import psycopg2
 import json
 import time
+import os
 import constant_queries as utils
-from configparser import ConfigParser
+from dotenv import load_dotenv
 
-
-reader = ConfigParser()
-reader.read('config.ini')
+load_dotenv()
 
 class Warehouse_Manager:
     def __init__(self):
@@ -18,7 +17,7 @@ class Warehouse_Manager:
     def extract_lake(self) -> list:
         '''Extracts the data from the lake, cleans it and writes it all in a list. This method returns a list of
         the ISS data.'''
-        with open(f'{reader['CRUCIAL']['LAKE_NAME']}.json', 'r') as file:
+        with open(f'{os.getenv('LAKE_NAME')}.json', 'r') as file:
             lake = json.load(file)
         finalized_data = []
         length = len(lake['iss']) - 1

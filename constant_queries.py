@@ -1,17 +1,17 @@
 '''Contains the main functions which are used multiple times throughout the program.'''
 
 import psycopg2
-from configparser import ConfigParser
+import os
+from dotenv import load_dotenv
 
-reader = ConfigParser()
-reader.read('config.ini')
+load_dotenv()
 
 def warehouse_connect() -> psycopg2.connect:
     return psycopg2.connect(
-        host = reader['POSTGRES_DATA']['HOST'],
-        user = reader['POSTGRES_DATA']['USER'],
-        password = reader['POSTGRES_DATA']['PASS'],
-        database = reader['POSTGRES_DATA']['DB_NAME']
+        host = os.getenv('HOST'),
+        user = os.getenv('USER'),
+        password = os.getenv('PASS'),
+        database = os.getenv('DB_NAME')
     )
 
 
@@ -47,7 +47,7 @@ warehouse_columns = ''.join([f'{i.rstrip()}, ' for i in warehouse_params])[5:-2]
 
 normalized_columns = ''.join([f'{i.rstrip()}, ' for i in normalized_params])[5:-2]
 
-geocoding_params = {'User-Agent' : reader['USER_DATA']['UserAgent'], 'api_key' : reader['CRUCIAL']['API_KEY']}
+geocoding_params = {'User-Agent' : os.getenv('UserAgent'), 'api_key' : os.getenv('API_KEY')}
 
 select_query = 'SELECT * FROM iss_25544_warehouse'
 

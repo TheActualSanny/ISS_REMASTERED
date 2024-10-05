@@ -3,13 +3,12 @@
 import psycopg2
 import pandas
 import time
+import os
 import constant_queries as utils
 from reverse_geocoding import reverse_geocode
 from logging_config import logger
-from configparser import ConfigParser
+from dotenv import load_dotenv
 
-reader = ConfigParser()
-reader.read('config.ini')
 
 class Data_Calculations:
     def __init__(self):
